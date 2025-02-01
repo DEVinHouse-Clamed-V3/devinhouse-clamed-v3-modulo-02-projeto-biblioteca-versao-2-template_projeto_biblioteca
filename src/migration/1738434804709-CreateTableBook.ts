@@ -57,6 +57,7 @@ export class CreateTableBook1738434804709 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable("livros");
     }
 
 }
