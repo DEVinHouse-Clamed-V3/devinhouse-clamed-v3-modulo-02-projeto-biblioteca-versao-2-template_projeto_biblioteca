@@ -21,12 +21,12 @@ AppDataSource.initialize()
   })
   .catch(() => console.log("Erro ao conectar com o banco de dados"));
 
-  
+
 app.use("/livros", livroRoutes);
 app.use("/auditorios", auditorioRoutes);
 app.use("/autores", autorRoutes);
 app.use("/leitores", leitorRoutes);
 
-app.listen(3333, () => {
+app.listen(3000, () => {
   console.log("Servidor rodando na porta 3333");
 });
