@@ -19,5 +19,16 @@ export const AppDataSource = new DataSource({
     synchronize: true,
     logging: true,
     entities: [Livro, Auditorio, Leitor, Autor],
-    migrations: ["src/database/migrations/*.ts"]
+    migrations: ["src/database/migrations/*.ts"],
+    extra: {
+        connectTimeoutMS: 30000
+    }
 })
+
+AppDataSource.initialize()
+    .then(() => {
+        console.log("Data Source inicializado com sucesso!");
+    })
+    .catch((err) => {
+        console.error("Erro ao inicializar o Data Source", err);
+    });

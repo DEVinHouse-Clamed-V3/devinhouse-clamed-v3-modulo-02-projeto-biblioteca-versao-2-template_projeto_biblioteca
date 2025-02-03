@@ -15,11 +15,11 @@ app.use(cors());
 
 app.use(express.json());
 
-AppDataSource.initialize()
-  .then(async () => {
-    console.log("Sua conexão com banco de dados está ok");
+AppDataSource.initialize().then(() => {
+  app.listen(3000, () => {
+      console.log("O servidor está rodando em http://localhost:3000")
   })
-  .catch(() => console.log("Erro ao conectar com o banco de dados"));
+}).catch(error => console.log(error))
 
   
 app.use("/livros", livroRoutes);
@@ -27,6 +27,4 @@ app.use("/auditorios", auditorioRoutes);
 app.use("/autores", autorRoutes);
 app.use("/leitores", leitorRoutes);
 
-app.listen(3333, () => {
-  console.log("Servidor rodando na porta 3333");
-});
+
