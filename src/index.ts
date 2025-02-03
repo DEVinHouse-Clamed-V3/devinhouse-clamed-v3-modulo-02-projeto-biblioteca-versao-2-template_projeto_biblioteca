@@ -8,6 +8,7 @@ import livroRoutes from "./routes/livro.routes";
 import auditorioRoutes from "./routes/auditorio.routes";
 import autorRoutes from "./routes/autor.routes";
 import leitorRoutes from "./routes/leitor.routes";
+import errorMiddleware from "./middlewares/errorMiddleware";
 
 const app = express();
 
@@ -21,11 +22,11 @@ AppDataSource.initialize()
   })
   .catch(() => console.log("Erro ao conectar com o banco de dados"));
 
-  
 app.use("/livros", livroRoutes);
 app.use("/auditorios", auditorioRoutes);
 app.use("/autores", autorRoutes);
 app.use("/leitores", leitorRoutes);
+app.use(errorMiddleware);
 
 app.listen(3333, () => {
   console.log("Servidor rodando na porta 3333");
