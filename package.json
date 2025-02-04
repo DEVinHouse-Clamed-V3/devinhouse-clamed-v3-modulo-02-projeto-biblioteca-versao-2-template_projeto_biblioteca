@@ -21,6 +21,8 @@
    },
    "scripts": {
       "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-      "migration:run": "typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:run"
+      "typeorm": "typeorm-ts-node-commonjs",
+      "migration:run": "typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:run",
+      "migration:create": "typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:create -n"
    }
 }
