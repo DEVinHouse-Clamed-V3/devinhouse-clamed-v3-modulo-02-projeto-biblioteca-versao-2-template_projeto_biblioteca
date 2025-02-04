@@ -18,6 +18,6 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_DATABASE,
     synchronize: true,
     logging: true,
-    entities: [Livro, Auditorio, Leitor, Autor],
+    entities: ["src/entity/*.ts"],
     migrations: ["src/database/migrations/*.ts"]
 })
