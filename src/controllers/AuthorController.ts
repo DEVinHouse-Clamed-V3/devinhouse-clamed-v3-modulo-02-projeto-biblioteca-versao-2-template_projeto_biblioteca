@@ -18,6 +18,24 @@ class AuthorController {
     }
   }
 
+  async authorsBirthdate(req: Request, res: Response): Promise<void> {
+    try {
+      const currentMonth = new Date().getMonth() + 1; // Mês atual (Janeiro é 0)
+      const authors = await AppDataSource.getRepository(Author)
+        .createQueryBuilder('author')
+        .where('EXTRACT(MONTH FROM author.birth_date) = :currentMonth', {
+          currentMonth,
+        })
+        .getMany();
+      res.status(200).json(authors);
+    } catch (error: any) {
+      res
+        .status(500)
+        .json({ message: 'Erro ao buscar autores', error: error.message });
+      return;
+    }
+  }
+
   async getById(req: Request, res: Response): Promise<void> {
     try {
       const id = parseInt(req.params.id, 10);
@@ -62,7 +80,7 @@ class AuthorController {
       author.updated_at = new Date();
 
       const savedAuthor = await AppDataSource.getRepository(Author).save(
-        author
+        author,
       );
       res.status(201).json(savedAuthor);
     } catch (error: any) {

@@ -4,6 +4,7 @@ const authorController = new AuthorController();
 const authorRoutes = Router();
 
 authorRoutes.get('/', authorController.getAll);
+authorRoutes.get('/authorsBirthdate', authorController.authorsBirthdate);
 authorRoutes.get('/:id', authorController.getById);
 authorRoutes.post('/', authorController.create);
 authorRoutes.put('/:id', authorController.update);
