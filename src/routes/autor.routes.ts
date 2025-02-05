@@ -1,7 +1,15 @@
 import { Router } from 'express';
+import AuthorController from '../controllers/AuthorController';
+const authorController = new AuthorController();
+const authorRoutes = Router();
 
-const autorRoutes = Router();
+authorRoutes.get('/', authorController.getAll);
+authorRoutes.get('/authorsBirthdate', authorController.authorsBirthdate);
+authorRoutes.get('/:id', authorController.getById);
+authorRoutes.post('/', authorController.create);
+authorRoutes.put('/:id', authorController.update);
+authorRoutes.delete('/:id', authorController.delete);
+authorRoutes.post('/login', authorController.login);
+authorRoutes.patch('/:id/status', authorController.disable);
 
-/* Implemente aqui os métodos que irão atender as requisições HTTP para a entidade Autor. */
-
-export default autorRoutes;
+export default authorRoutes;
