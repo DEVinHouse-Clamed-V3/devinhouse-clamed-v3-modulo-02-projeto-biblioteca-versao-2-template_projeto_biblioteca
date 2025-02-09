@@ -27,6 +27,6 @@ app.use("/auditorios", auditorioRoutes);
 app.use("/autores", autorRoutes);
 app.use("/leitores", leitorRoutes);
 
-app.listen(3333, () => {
-  console.log("Servidor rodando na porta 3333");
+app.listen(4000, () => {
+  console.log("Servidor rodando na porta 4000");
 });
